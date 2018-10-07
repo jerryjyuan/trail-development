@@ -23,7 +23,7 @@ public class FlagControllerTest {
 	public void testGetAllFlags() {        
         String url = servletContext.getContextPath() + "/getall";
         ResponseEntity<List<Flag>> allFlags = restTemplate.exchange(url, HttpMethod.GET, null, Flag.class);
-        assertTrue(allFlags != null && allFlags.getBody().size() == 25);
+        assertTrue(allFlags != null && allFlags.getBody().size() == 26);
         allFlags.getBody().stream().forEach(f->{
             assertFlag(f);
         });
@@ -51,12 +51,12 @@ public class FlagControllerTest {
                                                                  stringEndsWith("Argentina.png")))
                 break;
             case "Asia":
-                assertThat(flag.getNation(), anyOf(Arrays.asList(isEqual("China"), isEqual("India"),
+                assertThat(flag.getNation(), anyOf(Arrays.asList(isEqual("Japan"), isEqual("Taiwan"), isEqual("India"),
                                                                  isEqual("Indonesia"), isEqual("Pakistan"), 
                                                                  isEqual("Bangladesh")))
-                assertThat(flag.getFlag(), anyOf(Arrays.asList(stringEndsWith("China.png"), stringEndsWith("India.png"),
-                                                                 stringEndsWith("Indonesia.png"), stringEndsWith("Pakistan.png"), 
-                                                                 stringEndsWith("Bangladesh.png")))
+                assertThat(flag.getFlag(), anyOf(Arrays.asList(stringEndsWith("Japan.png"), stringEndsWith("Taiwan.png"), 
+							         stringEndsWith("India.png"), stringEndsWith("Indonesia.png"), 
+							         stringEndsWith("Pakistan.png"), stringEndsWith("Bangladesh.png")))
                 break;
             case "Europe":
                 assertThat(flag.getNation(), anyOf(Arrays.asList(isEqual("Russia"), isEqual("Germany"),
