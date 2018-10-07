@@ -1,0 +1,127 @@
+[
+	{
+		"continent": "Africa",
+		"countries": [
+			{
+				"name": "Nigeria",
+				"flag": "Nigeria.png"
+			},
+			{
+				"name": "Ethiopia",
+				"flag": "Ethiopia.png"
+			},
+			{
+				"name": "Egypt",
+				"flag": "Egypt.png"
+			},
+			{
+				"name": "DR Congo",
+				"flag": "DRCongo.png"
+			},
+			{
+				"name": "South Africa",
+				"flag": "SouthAfrica.png"
+			}
+		]
+	},
+	{
+		"continent": "America",
+		"countries": [
+			{
+				"name": "USA",
+				"flag": "USA.png"
+			},
+			{
+				"name": "Brazil",
+				"flag": "Brazil.png"
+			},
+			{
+				"name": "Mexico",
+				"flag": "Mexico.png"
+			},
+			{
+				"name": "Colombia",
+				"flag": "Colombia.png"
+			},
+			{
+				"name": "Argentina",
+				"flag": "Argentina.png"
+			}
+		]
+	},
+	{
+		"continent": "Asia",
+		"countries": [
+			{
+				"name": "China",
+				"flag": "China.png"
+			},
+			{
+				"name": "India",
+				"flag": "India.png"
+			},
+			{
+				"name": "Indonesia",
+				"flag": "Indonesia.png"
+			},
+			{
+				"name": "Pakistan",
+				"flag": "Pakistan.png"
+			},
+			{
+				"name": "Bangladesh",
+				"flag": "Bangladesh.png"
+			}
+		]
+	},
+	{
+		"continent": "Europe",
+		"countries": [
+			{
+				"name": "Russia",
+				"flag": "Russia.png"
+			},
+			{
+				"name": "Germany",
+				"flag": "Germany.png"
+			},
+			{
+				"name": "UK",
+				"flag": "UK.png"
+			},
+			{
+				"name": "France",
+				"flag": "France.png"
+			},
+			{
+				"name": "Italy",
+				"flag": "Italy.png"
+			}
+		]
+	},
+	{
+		"continent": "Oceania",
+		"countries": [
+			{
+				"name": "Australia",
+				"flag": "Australia.png"
+			},
+			{
+				"name": "Papua New Guinea",
+				"flag": "PapuaNewGuinea.png"
+			},
+			{
+				"name": "New Zealand",
+				"flag": "NewZealand.png"
+			},
+			{
+				"name": "Fiji",
+				"flag": "Fiji.png"
+			},
+			{
+				"name": "Solomon Islands",
+				"flag": "SolomonIslands.png"
+			}
+		]
+	}
+]
