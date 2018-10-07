@@ -53,8 +53,12 @@
 		"continent": "Asia",
 		"countries": [
 			{
-				"name": "China",
-				"flag": "China.png"
+				"name": "Japan",
+				"flag": "Japan.png"
+			},
+			{
+				"name": "Taiwan",
+				"flag": "Taiwan.png"
 			},
 			{
 				"name": "India",
