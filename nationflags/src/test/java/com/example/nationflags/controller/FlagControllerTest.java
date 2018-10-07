@@ -3,6 +3,7 @@ package com.example.nationflags;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -10,7 +11,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 public class FlagControllerTest {
 
     @Autowired
@@ -21,7 +22,8 @@ public class FlagControllerTest {
     
 	@Test
 	public void testGetAllFlags() {        
-        String url = servletContext.getContextPath() + "/getall";
+        //String url = servletContext.getContextPath() + "/getall";
+	String url = "/getall";
         ResponseEntity<List<Flag>> allFlags = restTemplate.exchange(url, HttpMethod.GET, null, Flag.class);
         assertTrue(allFlags != null && allFlags.getBody().size() == 26);
         allFlags.getBody().stream().forEach(f->{
