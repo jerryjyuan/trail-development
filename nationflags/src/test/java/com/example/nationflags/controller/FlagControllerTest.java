@@ -1,14 +1,24 @@
-package com.example.nationflags;
+package com.example.nationflags.controller;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.context.junit4.SpringRunner;
-
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.bind.annotation.HttpMethod;
 
+import com.example.nationflags.model.Flag;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Matcher.anyOf;
+import static org.junit.Matcher.isEqual;
+import static org.junit.Matcher.stringEndsWith;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
@@ -16,20 +26,16 @@ public class FlagControllerTest {
 
     @Autowired
 	private TestRestTemplate restTemplate;
-    
-    @Autowired
-    private ServletContext servletContext;
-    
-	@Test
-	public void testGetAllFlags() {        
-        //String url = servletContext.getContextPath() + "/getall";
-	String url = "/getall";
+
+    @Test
+    public void testGetAllFlags() {        
+        String url = "/getall";
         ResponseEntity<List<Flag>> allFlags = restTemplate.exchange(url, HttpMethod.GET, null, Flag.class);
-        assertTrue(allFlags != null && allFlags.getBody().size() == 26);
+        assertTrue(allFlags != null && allFlags.getBody().size() == 25);
         allFlags.getBody().stream().forEach(f->{
             assertFlag(f);
         });
-	}
+    }
 
     private void assertFlag(Flag flag) {
         if (flag == null) {
@@ -53,12 +59,12 @@ public class FlagControllerTest {
                                                                  stringEndsWith("Argentina.png")))
                 break;
             case "Asia":
-                assertThat(flag.getNation(), anyOf(Arrays.asList(isEqual("Japan"), isEqual("Taiwan"), isEqual("India"),
+                assertThat(flag.getNation(), anyOf(Arrays.asList(isEqual("China"), isEqual("India"),
                                                                  isEqual("Indonesia"), isEqual("Pakistan"), 
                                                                  isEqual("Bangladesh")))
-                assertThat(flag.getFlag(), anyOf(Arrays.asList(stringEndsWith("Japan.png"), stringEndsWith("Taiwan.png"), 
-							         stringEndsWith("India.png"), stringEndsWith("Indonesia.png"), 
-							         stringEndsWith("Pakistan.png"), stringEndsWith("Bangladesh.png")))
+                assertThat(flag.getFlag(), anyOf(Arrays.asList(stringEndsWith("China.png"), stringEndsWith("India.png"),
+                                                                 stringEndsWith("Indonesia.png"), stringEndsWith("Pakistan.png"), 
+                                                                 stringEndsWith("Bangladesh.png")))
                 break;
             case "Europe":
                 assertThat(flag.getNation(), anyOf(Arrays.asList(isEqual("Russia"), isEqual("Germany"),
@@ -82,12 +88,12 @@ public class FlagControllerTest {
     }
                    
     @Test
-	public void testGetFlagByNation() {
-        String url = servletContext.getContextPath() + "/getflag/USA";
+    public void testGetFlagByNation() {
+        String url = "/getflag/USA";
         ResponseEntity<Flag> testFlag = restTemplate.exchange(url, HttpMethod.GET, null, Flag.class);
-        assertNotNUll(testFlag);
+        assertNotNull(testFlag);
         assertEquals(testFlag.getNation(), "USA");
         assertTrue(testFlag.getFlag().contains("USA.png"));
-	}
+    }
 
 }
